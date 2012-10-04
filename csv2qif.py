@@ -1,18 +1,12 @@
 #!/usr/bin/env python
 # -*- coding: iso-8859-15 -*-
-# -*- Mode: Python; py-ident-offset: 4 -*-
-# vim:ts=4:sw=4:et
 '''
-CSV2OFX
+CSV2QIF
 =======
 
-This script converts the CSV provided by CGD (CAIXA GERAL DE DEPOSITOS)
-home banking system to a QIF format so the it can be imported to personal
-finance systems.
+This script converts the CSV provided by homemoney.ua to a QIF format.
 
 '''
-__revision__ = '$Rev$'[6:-2]
-
 import sys
 import csv
 from datetime import datetime
@@ -44,15 +38,6 @@ def read_csv(statement_file):
     return data
 
 def convert_qif(data, outputfile):
-    ''' writes the extracted data into a QIF file
-
-        Example:
-        !Type:Bank
-        D26/08/09
-        T-20
-        PLEVANTAMENTO
-        ^
-    '''
     for row in data:
         outputfile.write('!Type:Bank\n')
         outputfile.write('D%s\n' % (row[0].strftime("%d/%m/%Y"), ))
