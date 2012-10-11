@@ -16,6 +16,7 @@ def read_csv(statement_file, output):
     '''
     default_currency = 'UAH'
     csv_reader = csv.reader(statement_file, delimiter=';')
+    csv_reader.next()
     temp_data = []
     for row in csv_reader:
         try:
@@ -106,7 +107,7 @@ L[{4}]
     str(total_from),
     str(description),
     str(account_to),
-    str(total_to)
+    str(-total_to)
     )
     return ret
 
